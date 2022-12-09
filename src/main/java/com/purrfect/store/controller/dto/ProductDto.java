@@ -1,38 +1,20 @@
-package com.purrfect.store.repository.entity;
+package com.purrfect.store.controller.dto;
 
-    import com.purrfect.store.controller.dto.ProductDto;
-    import jakarta.persistence.Entity;
-    import jakarta.persistence.GeneratedValue;
-    import jakarta.persistence.GenerationType;
-    import jakarta.persistence.Id;
-    import java.math.BigDecimal;
-@Entity
-public class Product {
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private Integer id;
+import java.math.BigDecimal;
+
+public class ProductDto {
     private String name;
     private String description;
     private String imageUrl;
     private String imageAltText;
     private BigDecimal price;
 
-    public Product() {}
-
-    public Product (ProductDto productDto) {
-        this.name = productDto.getName();
-        this.description = productDto.getDescription();
-        this.imageUrl = productDto.getImageUrl();
-        this.imageAltText = productDto.getImageAltText();
-        this.price = productDto.getPrice();
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
+    public ProductDto (String name, String description, String imageUrl, String imageAltText, BigDecimal price) {
+        this.name = name;
+        this.description = description;
+        this.imageUrl = imageUrl;
+        this.imageAltText = imageAltText;
+        this.price = price;
     }
 
     public String getName() {
