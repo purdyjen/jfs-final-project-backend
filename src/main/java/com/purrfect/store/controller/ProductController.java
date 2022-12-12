@@ -68,9 +68,7 @@ ResponseEntity<?> replaceProduct(@RequestBody ProductDto productDto, @PathVariab
                 product.setPrice(productDto.getPrice());
                 return productRepository.save(product);
             }) //
-            .orElseGet(() -> {
-                return productRepository.save(new Product(productDto)); // BAAAD logic here (if wrong id, just add new product)
-            });
+            .orElseThrow(() -> new ProductNotFoundException(id));
 
     EntityModel<Product> entityModel = assembler.toModel(updatedProduct);
 
