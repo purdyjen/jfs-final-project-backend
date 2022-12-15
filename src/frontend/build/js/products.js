@@ -200,4 +200,5 @@ const deleteProduct = async (id) => {
   }
 };
 
-addProductCards(sampleProducts);
+// addProductCards(sampleProducts);
+getProducts();
