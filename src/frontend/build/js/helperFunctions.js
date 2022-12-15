@@ -23,6 +23,8 @@ export const formatPrice = (price) => price.toFixed(2);
 export const addProductCards = (arr) => {
   for (let i = 0; i < arr.length; i++) {
     const card = document.createElement("div"); // Creates div element object
+    const listProductsDiv = document.getElementById("list-products");
+
     const modalEl = document.createElement("div");
     const deleteEl = document.createElement("div");
     modalEl.innerHTML = `<div
@@ -164,10 +166,10 @@ export const addProductCards = (arr) => {
     let cardHTML = `
     <div class="card mb-3" style="max-width: 540px">
       <div class="row g-0">
-        <div class="col-md-4">
+        <div class="col-md-4 h-100">
           <img
             src="${arr[i].imageUrl}"
-            class="img-fluid rounded-start"
+            class="img img-fluid rounded-start h-100"
             alt="${arr[i].imageAltText}"
           />
         </div>
@@ -188,27 +190,4 @@ export const addProductCards = (arr) => {
     document.body.append(modalEl);
     document.body.append(deleteEl);
   }
-};
-
-export const addEventListeners = () => {
-  const confirmEditElements = Array.from(
-    document.getElementsByClassName("confirm-edit")
-  );
-  const confirmDeleteElements = Array.from(
-    document.getElementsByClassName("confirm-delete")
-  );
-
-  confirmEditElements.forEach((confirm) => {
-    confirm.addEventListener("click", function handleClick(e) {
-      const dataId = confirm.getAttribute("data-id");
-      updateProduct(dataId);
-    });
-  });
-
-  confirmDeleteElements.forEach((confirm) => {
-    confirm.addEventListener("click", function handleClick(e) {
-      const dataId = confirm.getAttribute("data-id");
-      deleteProduct(dataId);
-    });
-  });
 };

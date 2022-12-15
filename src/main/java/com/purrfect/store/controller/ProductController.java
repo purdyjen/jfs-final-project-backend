@@ -39,6 +39,7 @@ public class ProductController {
         return CollectionModel.of(products, linkTo(methodOn(ProductController.class).all()).withSelfRel());
     }
 
+    @CrossOrigin
     @PostMapping("/products")
     ResponseEntity<?> newProduct(@RequestBody ProductDto productDto) {
 

@@ -1,9 +1,4 @@
-import {
-  titleCase,
-  formatPrice,
-  addProductCards,
-  addEventListeners,
-} from "./helperFunctions.js";
+import { titleCase, formatPrice, addProductCards } from "./helperFunctions.js";
 const listProductsDiv = document.getElementById("list-products");
 const baseUrl = "http://localhost:8080";
 const sampleProducts = [
@@ -99,7 +94,7 @@ const getProducts = async () => {
     });
 };
 
-const addProduct = async () => {
+export const addProduct = async () => {
   const urlToFetch = `${baseUrl}/store/products`;
   const newProductName = document.getElementById("product-name");
   const newProductDescription = document.getElementById("product-description");
@@ -198,6 +193,29 @@ const deleteProduct = async (id) => {
   } catch (error) {
     console.log(error);
   }
+};
+
+const addEventListeners = () => {
+  const confirmEditElements = Array.from(
+    document.getElementsByClassName("confirm-edit")
+  );
+  const confirmDeleteElements = Array.from(
+    document.getElementsByClassName("confirm-delete")
+  );
+
+  confirmEditElements.forEach((confirm) => {
+    confirm.addEventListener("click", function handleClick(e) {
+      const dataId = confirm.getAttribute("data-id");
+      updateProduct(dataId);
+    });
+  });
+
+  confirmDeleteElements.forEach((confirm) => {
+    confirm.addEventListener("click", function handleClick(e) {
+      const dataId = confirm.getAttribute("data-id");
+      deleteProduct(dataId);
+    });
+  });
 };
 
 // addProductCards(sampleProducts);
