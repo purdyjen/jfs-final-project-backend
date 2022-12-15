@@ -23,11 +23,9 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @RequestMapping(path="/store")
 public class ProductController {
     private final ProductRepository productRepository;
-    private final ProductService productService;
     private final ProductModelAssembler assembler;
-    public ProductController(@Autowired ProductRepository productRepository, @Autowired ProductService productService, ProductModelAssembler assembler) {
+    public ProductController(ProductRepository productRepository, ProductModelAssembler assembler) {
         this.productRepository = productRepository;
-        this.productService = productService;
         this.assembler = assembler;
     }
     @GetMapping(path="/products")
