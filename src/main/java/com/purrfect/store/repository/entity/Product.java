@@ -5,7 +5,12 @@ package com.purrfect.store.repository.entity;
     import jakarta.persistence.GeneratedValue;
     import jakarta.persistence.GenerationType;
     import jakarta.persistence.Id;
+    import org.springframework.data.annotation.CreatedDate;
+    import org.springframework.data.annotation.LastModifiedDate;
+
     import java.math.BigDecimal;
+    import java.util.Date;
+
 @Entity
 public class Product {
     @Id
@@ -16,6 +21,12 @@ public class Product {
     private String imageUrl;
     private String imageAltText;
     private BigDecimal price;
+
+    @CreatedDate
+    private Date createdAt;
+
+    @LastModifiedDate
+    private Date updatedAt;
 
     public Product() {}
 
@@ -73,5 +84,21 @@ public class Product {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }
