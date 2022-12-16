@@ -18,6 +18,7 @@ export const titleCase = (str) => {
 export const formatPrice = (price) => price.toFixed(2);
 
 // Full disclosure: This function is doing entirely too much work.
+// I think it broke my CodeMetrics extension.
 // 0 out of 10, don't recommend.
 export const addProductCards = (arr) => {
   // Accesses the container div that will hold each of the product cards
